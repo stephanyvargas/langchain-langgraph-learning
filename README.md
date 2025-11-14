@@ -30,7 +30,9 @@ This project contains examples and experiments for learning LangChain and LangGr
 
 ## Examples
 
-### Basic LangGraph Example (`hello.py`)
+### Basic Examples
+
+#### Simple LangGraph Workflow (`examples/basic/hello.py`)
 A simple LangGraph workflow that demonstrates:
 - Creating a StateGraph with MessagesState
 - Adding nodes and edges
@@ -38,12 +40,12 @@ A simple LangGraph workflow that demonstrates:
 
 Run with:
 ```bash
-uv run python hello.py
+uv run python examples/basic/hello.py
 ```
 
-### LangChain Agent Examples
+### Agent Examples
 
-#### Functional API Agent (`first_agent_functional_API_usage.py`)
+#### Functional API Agent (`examples/agents/first_agent_functional_API_usage.py`)
 An agent using LangGraph's functional API that can perform arithmetic operations:
 - Uses `@task` and `@entrypoint` decorators
 - Integration with Anthropic's Claude model
@@ -52,10 +54,10 @@ An agent using LangGraph's functional API that can perform arithmetic operations
 
 Run with:
 ```bash
-uv run python first_agent_functional_API_usage.py
+uv run python examples/agents/first_agent_functional_API_usage.py
 ```
 
-#### Graph API Agent (`first_agent_graph_API_usage.py`)
+#### Graph API Agent (`examples/agents/first_agent_graph_API_usage.py`)
 An agent using LangGraph's graph API with explicit state management:
 - Custom state class with typed fields
 - Conditional edges for flow control
@@ -64,7 +66,7 @@ An agent using LangGraph's graph API with explicit state management:
 
 Run with:
 ```bash
-uv run python first_agent_graph_API_usage.py
+uv run python examples/agents/first_agent_graph_API_usage.py
 ```
 
 ## Project Structure
@@ -72,9 +74,12 @@ uv run python first_agent_graph_API_usage.py
 .
 ├── .env                                    # Environment variables (not tracked in git)
 ├── .env.example                           # Environment variables template
-├── hello.py                               # Basic LangGraph example
-├── first_agent_functional_API_usage.py   # Functional API agent example
-├── first_agent_graph_API_usage.py        # Graph API agent example
+├── examples/                              # Example implementations
+│   ├── basic/                            # Basic LangGraph examples
+│   │   └── hello.py                      # Simple workflow example
+│   └── agents/                           # Agent implementations
+│       ├── first_agent_functional_API_usage.py  # Functional API agent
+│       └── first_agent_graph_API_usage.py       # Graph API agent
 ├── images/                                # Generated graph visualizations
 ├── pyproject.toml                         # uv project configuration
 └── README.md                             # This file
@@ -83,6 +88,7 @@ uv run python first_agent_graph_API_usage.py
 ## Dependencies
 - **langchain**: Core LangChain framework
 - **langgraph**: Graph-based agent framework
+- **langgraph-cli[inmem]**: LangGraph CLI with in-memory backend for local development
 - **langchain-anthropic**: Anthropic Claude integration
 - **langchain-openai**: OpenAI integration
 - **python-dotenv**: Environment variable management
