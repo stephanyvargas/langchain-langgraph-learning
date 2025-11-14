@@ -3,13 +3,19 @@
 [![CI](https://github.com/langchain-ai/new-langgraph-project/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/langchain-ai/new-langgraph-project/actions/workflows/unit-tests.yml)
 [![Integration Tests](https://github.com/langchain-ai/new-langgraph-project/actions/workflows/integration-tests.yml/badge.svg)](https://github.com/langchain-ai/new-langgraph-project/actions/workflows/integration-tests.yml)
 
-This template demonstrates a simple application implemented using [LangGraph](https://github.com/langchain-ai/langgraph), designed for showing how to get started with [LangGraph Server](https://langchain-ai.github.io/langgraph/concepts/langgraph_server/#langgraph-server) and using [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/), a visual debugging IDE.
+This template demonstrates an **arithmetic agent** implemented using [LangGraph](https://github.com/langchain-ai/langgraph), designed for showing how to get started with [LangGraph Server](https://langchain-ai.github.io/langgraph/concepts/langgraph_server/#langgraph-server) and using [LangGraph Studio](https://langchain-ai.github.io/langgraph/concepts/langgraph_studio/), a visual debugging IDE.
 
 <div align="center">
   <img src="./static/studio_ui.png" alt="Graph view in LangGraph studio UI" width="75%" />
 </div>
 
-The core logic defined in `src/agent/graph.py`, showcases an single-step application that responds with a fixed string and the configuration provided.
+The core logic defined in `src/agent/graph.py`, showcases a **multi-node agent** that:
+
+- **Understands natural language** math requests using Anthropic's Claude
+- **Uses tools** for mathematical operations (add, multiply, divide)
+- **Makes decisions** about whether to call tools or respond directly
+- **Supports runtime configuration** for model selection and behavior
+- **Tracks state** including conversation history and LLM call counts
 
 You can extend this graph to orchestrate more complex agentic workflows that can be visualized and debugged in LangGraph Studio.
 
@@ -42,6 +48,35 @@ langgraph dev
 ```
 
 For more information on getting started with LangGraph Server, [see here](https://langchain-ai.github.io/langgraph/tutorials/langgraph-platform/local-server/).
+
+## Usage Examples
+
+### Basic Usage
+Try asking the agent to perform mathematical operations:
+- "Add 15 and 27"
+- "What is 8 times 9?"
+- "Divide 144 by 12"
+- "Calculate 25 + 17 - 8"
+
+### Configuration
+The agent supports runtime configuration:
+
+```python
+# Custom system prompt
+context = {
+    "system_prompt": "You are a patient math tutor. Always explain your steps.",
+    "model_name": "claude-sonnet-4-5-20250929",
+    "temperature": 0.1
+}
+
+# Use in LangGraph Studio or via API
+```
+
+### Graph Structure
+The agent uses a **conditional loop** pattern:
+1. **LLM Call**: Analyzes user input and decides whether to use tools
+2. **Tool Execution**: Performs mathematical operations when needed
+3. **Decision Point**: Continue with tools or return final answer
 
 ## How to customize
 
