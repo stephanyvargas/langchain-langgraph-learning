@@ -26,7 +26,8 @@ This project contains examples and experiments for learning LangChain and LangGr
 5. Edit `.env` file with your actual API keys:
    - `ANTHROPIC_API_KEY`: Your Anthropic API key for Claude models
    - `OPENAI_API_KEY`: Your OpenAI API key (optional)
-   - `LANGSMITH_API_KEY`: Your LangSmith API key (optional)
+   - `LANGSMITH_API_KEY`: Your LangSmith API key for tracing and debugging
+   - `LANGSMITH_PROJECT`: Project name for organizing traces (e.g., "new-agent")
 
 ## Examples
 
@@ -77,13 +78,39 @@ A complete LangGraph project template created with the CLI:
 - Runtime context support for configurable behavior
 - Ready for extension with complex agentic workflows
 
-To run the LangGraph server:
+To set up and run the LangGraph server:
 ```bash
 cd examples/langgraph_project
+uv add --dev .  # Install project in editable mode
 uv run langgraph dev
 ```
 
-This starts a local server that can be accessed via LangGraph Studio for visual debugging and development.
+This starts a local development server with:
+- **🚀 API**: http://127.0.0.1:2024
+- **🎨 Studio UI**: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
+- **📚 API Docs**: http://127.0.0.1:2024/docs
+
+The server includes:
+- In-memory runtime for development and testing
+- LangGraph Studio integration for visual debugging
+- Hot reload for local changes
+- Thread management and monitoring
+- Integration with LangSmith for tracing (when API key is configured)
+
+## Development Workflow
+
+### Using LangGraph Studio
+1. Start the development server: `cd examples/langgraph_project && uv run langgraph dev`
+2. Open LangGraph Studio in your browser (opens automatically)
+3. Create a new thread and test your agent
+4. Use the visual debugger to step through execution
+5. Edit code locally - changes are automatically reloaded
+
+### Local Development
+- All examples can be run directly: `uv run python examples/basic/hello.py`
+- The LangGraph project includes comprehensive tests: `cd examples/langgraph_project && uv run pytest`
+- Graph visualizations are saved to the `images/` directory
+- LangSmith tracing provides detailed execution logs when API key is configured
 
 ## Project Structure
 ```
