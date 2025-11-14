@@ -69,6 +69,22 @@ Run with:
 uv run python examples/agents/first_agent_graph_API_usage.py
 ```
 
+### LangGraph Project Template (`examples/langgraph_project/`)
+A complete LangGraph project template created with the CLI:
+- Professional project structure with tests, configuration, and documentation
+- LangGraph Server integration for development and deployment
+- LangGraph Studio compatibility for visual debugging
+- Runtime context support for configurable behavior
+- Ready for extension with complex agentic workflows
+
+To run the LangGraph server:
+```bash
+cd examples/langgraph_project
+uv run langgraph dev
+```
+
+This starts a local server that can be accessed via LangGraph Studio for visual debugging and development.
+
 ## Project Structure
 ```
 .
@@ -77,9 +93,14 @@ uv run python examples/agents/first_agent_graph_API_usage.py
 ├── examples/                              # Example implementations
 │   ├── basic/                            # Basic LangGraph examples
 │   │   └── hello.py                      # Simple workflow example
-│   └── agents/                           # Agent implementations
-│       ├── first_agent_functional_API_usage.py  # Functional API agent
-│       └── first_agent_graph_API_usage.py       # Graph API agent
+│   ├── agents/                           # Agent implementations
+│   │   ├── first_agent_functional_API_usage.py  # Functional API agent
+│   │   └── first_agent_graph_API_usage.py       # Graph API agent
+│   └── langgraph_project/               # Complete LangGraph project template
+│       ├── src/agent/graph.py           # Core graph implementation
+│       ├── tests/                       # Unit and integration tests
+│       ├── langgraph.json              # LangGraph configuration
+│       └── README.md                   # Project-specific documentation
 ├── images/                                # Generated graph visualizations
 ├── pyproject.toml                         # uv project configuration
 └── README.md                             # This file
