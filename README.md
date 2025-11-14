@@ -71,12 +71,20 @@ uv run python examples/agents/first_agent_graph_API_usage.py
 ```
 
 ### LangGraph Project Template (`examples/langgraph_project/`)
-A complete LangGraph project template created with the CLI:
-- Professional project structure with tests, configuration, and documentation
-- LangGraph Server integration for development and deployment
-- LangGraph Studio compatibility for visual debugging
-- Runtime context support for configurable behavior
-- Ready for extension with complex agentic workflows
+A complete **arithmetic agent** built with LangGraph that demonstrates:
+- **Multi-node architecture** with conditional routing
+- **Tool calling** for mathematical operations (add, multiply, divide)
+- **Natural language understanding** using Anthropic's Claude
+- **Runtime configuration** for customizable behavior
+- **Professional project structure** with tests and CI/CD
+- **Production-ready** deployment capabilities
+
+**Key Features:**
+- Understands math requests in natural language
+- Uses tools for precise calculations
+- Makes intelligent decisions about when to call tools
+- Supports runtime configuration per conversation
+- Tracks conversation history and execution metrics
 
 To set up and run the LangGraph server:
 ```bash
@@ -101,10 +109,26 @@ The server includes:
 
 ### Using LangGraph Studio
 1. Start the development server: `cd examples/langgraph_project && uv run langgraph dev`
-2. Open LangGraph Studio in your browser (opens automatically)
-3. Create a new thread and test your agent
-4. Use the visual debugger to step through execution
-5. Edit code locally - changes are automatically reloaded
+2. Open LangGraph Studio: https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024
+3. Create a new thread to start testing your arithmetic agent
+4. Try natural language math requests:
+   - "Add 15 and 27"
+   - "What is 8 times 9?"
+   - "Calculate (25 + 17) * 3"
+5. Configure the agent with custom settings:
+   ```json
+   {
+     "system_prompt": "You are a patient math tutor. Always explain your steps.",
+     "temperature": 0.1
+   }
+   ```
+6. Use the visual debugger to:
+   - Watch nodes execute in real-time
+   - Inspect state changes between nodes
+   - See tool calling decisions
+   - Step through conditional routing
+   - Edit and replay from any point
+7. Edit code locally - changes are automatically reloaded
 
 ### Local Development
 - All examples can be run directly: `uv run python examples/basic/hello.py`
@@ -142,8 +166,32 @@ The server includes:
 - **python-dotenv**: Environment variable management
 - **ipython**: Enhanced Python REPL and visualization support
 
+## Learning Outcomes
+
+This project demonstrates key LangGraph concepts:
+
+### 🏗️ **Architecture Patterns**
+- **Conditional Routing**: Decision-making with `should_continue` functions
+- **Tool Integration**: Seamless LLM-tool interaction loops
+- **State Management**: Tracking conversation and execution state
+- **Runtime Configuration**: Dynamic behavior customization
+
+### 🛠️ **Production Practices**
+- **Testing Strategy**: Unit and integration tests
+- **Development Workflow**: Hot reload and visual debugging
+- **Deployment Ready**: Professional project structure
+- **Observability**: LangSmith tracing integration
+
+### 🎯 **Extensibility Examples**
+From this arithmetic agent foundation, you can build:
+- **Web Search Agents**: Replace math tools with search APIs
+- **Data Analysis Bots**: Add pandas/plotting tools
+- **Code Assistants**: Include code execution tools
+- **Multi-Modal Agents**: Add image/document processing
+
 ## Next Steps
 - Explore more complex LangGraph workflows
 - Implement multi-agent systems
 - Add memory and persistence
 - Create advanced tool integrations
+- Build domain-specific agents using this template
