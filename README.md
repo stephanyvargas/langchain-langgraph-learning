@@ -17,7 +17,7 @@ This project contains examples and experiments for learning LangChain and LangGr
    ```
 3. Install dependencies:
    ```bash
-   uv add langgraph langchain langchain-anthropic langchain-openai python-dotenv ipython
+   uv add langgraph langchain langchain-anthropic langchain-openai python-dotenv ipython jupyter chromadb fastapi uvicorn pytest pytest-asyncio psycopg2-binary
    ```
 4. Copy `.env.example` to `.env` and add your API keys:
    ```bash
@@ -105,6 +105,34 @@ The server includes:
 - Thread management and monitoring
 - Integration with LangSmith for tracing (when API key is configured)
 
+## Comprehensive Tutorial Collection (`tutorial/`)
+
+A complete **LangGraph tutorial series** from a Udemy course with 13 Jupyter notebooks covering beginner to advanced concepts:
+
+### 📚 **Tutorial Progression:**
+1. **Fundamentals** (00-03): TypedDict vs Pydantic, LangGraph basics, tool calling, agent fundamentals
+2. **RAG Implementation** (04-06): RAG basics, agent integration, memory-enabled RAG systems
+3. **Advanced Patterns** (07-13): State management, human-in-the-loop, parallel execution, async/streaming, subgraphs, design patterns, long-term memory
+
+### 🏗️ **Additional Resources:**
+- **`unit_tests/`**: Testing framework and examples for LangGraph applications
+- **`fullstackapp/`**: Complete capstone project with Angular frontend, FastAPI backend, PostgreSQL database
+
+### 🚀 **Running Tutorials:**
+```bash
+# Start Jupyter for interactive learning
+uv run jupyter notebook tutorial/
+
+# Run specific tutorial
+uv run jupyter notebook tutorial/01_Basics.ipynb
+
+# Test tutorial code
+uv run pytest tutorial/unit_tests/
+
+# Run fullstack app (when ready)
+cd tutorial/fullstackapp && uv run uvicorn main:app
+```
+
 ## Development Workflow
 
 ### Using LangGraph Studio
@@ -152,6 +180,27 @@ The server includes:
 │       ├── tests/                       # Unit and integration tests
 │       ├── langgraph.json              # LangGraph configuration
 │       └── README.md                   # Project-specific documentation
+├── tutorial/                              # Comprehensive tutorial collection
+│   ├── 00_TypedDict.ipynb               # TypedDict vs Pydantic fundamentals
+│   ├── 01_Basics.ipynb                  # LangGraph core concepts
+│   ├── 02_Tool_calling_basics.ipynb     # Tool integration patterns
+│   ├── 03_Agent_basics.ipynb            # Agent creation and management
+│   ├── 04_RAG_Basics.ipynb              # Retrieval-Augmented Generation
+│   ├── 05_RAG_Agent.ipynb               # RAG agent implementation
+│   ├── 06_RAG_Agent_with_memory.ipynb   # Memory-enabled RAG systems
+│   ├── 07_Advanced_State.ipynb          # Complex state management
+│   ├── 08_Human_in_the_Loop.ipynb       # Interactive workflows
+│   ├── 09_ParallelExecution.ipynb       # Parallel node execution
+│   ├── 10_AsyncAndStreaming.ipynb       # Async operations and streaming
+│   ├── 11_Subgraphs.ipynb               # Modular workflow design
+│   ├── 12_Agent_Patterns.ipynb          # Common design patterns
+│   ├── 13_LongTermMemory.ipynb          # Persistent memory implementation
+│   ├── unit_tests/                      # Testing framework for LangGraph
+│   ├── fullstackapp/                    # Complete capstone project
+│   │   ├── frontend/                    # Angular frontend
+│   │   ├── backend/                     # FastAPI backend
+│   │   └── docker-compose.yaml          # Multi-service deployment
+│   └── README.md                        # Tutorial-specific documentation
 ├── images/                                # Generated graph visualizations
 ├── pyproject.toml                         # uv project configuration
 └── README.md                             # This file
@@ -165,6 +214,11 @@ The server includes:
 - **langchain-openai**: OpenAI integration
 - **python-dotenv**: Environment variable management
 - **ipython**: Enhanced Python REPL and visualization support
+- **jupyter**: Interactive notebook environment for tutorials
+- **chromadb**: Vector database for RAG implementations
+- **fastapi & uvicorn**: Web framework for fullstack applications
+- **pytest & pytest-asyncio**: Testing framework for LangGraph applications
+- **psycopg2-binary**: PostgreSQL integration for advanced tutorials
 
 ## Learning Outcomes
 
