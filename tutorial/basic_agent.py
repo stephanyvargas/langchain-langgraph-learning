@@ -3,10 +3,12 @@ from langgraph.graph import END, START, StateGraph, MessagesState
 from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage
+#from langgraph.checkpoint.memory import MemorySaver # should not be used with langsmith
 from langgraph.prebuilt import ToolNode
 from typing import Literal
 
 load_dotenv()
+#checkpointer = MemorySaver()
 
 @tool
 def get_weather(location: str):
@@ -42,10 +44,10 @@ workflow.add_conditional_edges(
 )
 workflow.add_edge("tools", "agent")
 
-graph = workflow.compile()
-value ={
-        "messages": [
-            HumanMessage(content="How is the weather in munich?")
-        ]
-    }
-print(graph.invoke(value))
+graph = workflow.compile() # checkpointer=checkpointer) # dont use checkpointers with langsmith
+#value ={
+#        "messages": [
+#            HumanMessage(content="How is the weather in munich?")
+#        ]
+#    }
+#print(graph.invoke(value))
